@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Prefs WebExtention API",
+  "description": "Proivces limited access to Serivces.prefs",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "id": "prefs@experiments.addons.mozilla.org"
+    }
+  },
+
+  "experiment_apis": {
+    "prefs": {
+      // identifier from the script. __FORMERLY__ COULD BE ANY matching the one within the script. NOW it MUS match API name !!!
+      "schema": "schema.json", // Schema is cached, you have to restart the browser if you encounter any errors in it.
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "api.js",
+        "paths": [["experiments", "prefs"]] //must begin from "experiments" and must match to permission name
+      }
+    }
+  }
+}
